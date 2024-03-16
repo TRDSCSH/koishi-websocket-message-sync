@@ -1,7 +1,7 @@
 {
   "name": "koishi-plugin-websocket-message-sync",
   "description": "简易的 WebSocket 服务端，应用于 Telegram 群组，可以用作《Minecraft》基岩版服务端消息互通插件",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "files": [

@@ -35,7 +35,7 @@ export function apply(ctx: Context, config: Config) {
   wss.on('connection', (ws: WebSocket) => { // 监听客户端连接
     console.log('Connection open')
 
-    ctx.on('message', (session) => { // 监听 TG 消息
+    ctx.once('message', (session) => { // 监听 TG 消息
       const authorId = session.author.id
       const content = session.content
 
