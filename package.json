@@ -9,12 +9,24 @@
     "dist"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TRDSCSH/koishi-websocket-message-sync.git"
+  },
   "keywords": [
     "chatbot",
     "koishi",
-    "plugin"
+    "plugin",
+    "websocket",
+    "minecraft"
   ],
   "peerDependencies": {
     "koishi": "^4.17.2"
+  },
+  "koishi": {
+    "description": {
+      "zh": "基于 WebSocket 的《Minecraft》基岩版服务端消息互通插件"
+    },
+    "locales": ["zh"]
   }
 }
