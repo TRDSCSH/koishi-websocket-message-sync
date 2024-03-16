@@ -12,8 +12,8 @@ export const Config: Schema<Config> = Schema.object({
 
 export function apply(ctx: Context, config: Config) {
   const platform = 'telegram'
-  const selfId = config.selfId
-  const port = config.port
+  const selfId = config['selfId']
+  const port = config['port']
   let wss
 
   if (!selfId) {
