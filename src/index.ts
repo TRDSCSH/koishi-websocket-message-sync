@@ -45,12 +45,19 @@ export function apply(ctx: Context, config: Config) {
 
   wss.on('connection', (ws: WebSocket) => { // 监听客户端连接
     console.log('Connection open')
-    const id = wsMap.size
+    const id = genRanID(10)
     wsMap.set(id, ws)
 
     ws.on('message', (message: string) => { // 监听客户端消息
       console.log('[WS消息] %s', message)
-      ctx.broadcast([`${platform}:${selfId}`], h.text(`${message}`));
+      ctx.broadcast([`${platform}:${selfId}`], h.text(`${message}`))
+      if (wsMap.size >= 2) {
+        for (let key of wsMap.keys()) {
+          if (id != key) {
+            wsMap.get(key).send(`§3${message}§r`)
+          }
+        }
+      }
     })
 
     ws.on('close', () => { // 监听客户端关闭
@@ -59,4 +66,13 @@ export function apply(ctx: Context, config: Config) {
       wsMap.delete(id)
     })
   })
+
+  function genRanID(digit: number): string {
+    const chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    let result = ''
+    for (let i = 0; i < digit; i++) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length))
+    }
+    return result
+  }
 }
